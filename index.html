@@ -9,6 +9,22 @@
         PRELOAD: false, // Whether to preload the file list. It is recommended to enable it only when there are very few folders.
       };
     </script>
+    <script>
+  // JavaScript to handle the selected menu item
+  document.addEventListener("DOMContentLoaded", () => {
+    const navItems = document.querySelectorAll('.nav span');
+
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        // Remove 'selected' class from all nav items
+        navItems.forEach(nav => nav.classList.remove('selected'));
+
+        // Add 'selected' class to the clicked item
+        item.classList.add('selected');
+      });
+    });
+  });
+</script>
     <meta charset="utf-8" />
     <meta
       content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"
