@@ -1,0 +1,64 @@
+/* theme.css */
+/* General theme settings */
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: gray;
+    text-decoration: underline;
+}
+
+/* Menu styles */
+.nav span {
+    padding: 0.5em 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav span:hover {
+    background-color: gray;
+    color: black;
+}
+
+.nav .selected {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+
+/* Button styles */
+button {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}
+
+/* Table or List styles */
+.row.file-wrapper {
+    background-color: black;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.row.file-wrapper:hover {
+    background-color: gray;
+    color: black;
+}
