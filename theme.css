@@ -130,18 +130,23 @@ button:focus {
     }
 }
 
-/* Table or List styles for hover effects */
+/* Table or List styles */
 .row.file-wrapper {
     background-color: black;
     color: white;
-    transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+    font-size: 1.5em; /* Increase text size */
+    padding: 0.5em; /* Add padding for better spacing */
+    transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out, font-size 0.3s ease-in-out;
 }
 
 .row.file-wrapper p {
-    margin: 0; /* Reset margin for better alignment */
+    margin: 0; /* Reset margin for proper alignment */
 }
 
+/* Hover Effect */
 .row.file-wrapper:hover {
-    transform: scale(1.1); /* Slightly enlarge the element on hover */
+    transform: scale(1.1); /* Slightly enlarge on hover */
     text-shadow: 0 0 10px #ff4040, 0 0 20px #ff4040, 0 0 30px #ff4040; /* Glowing effect */
+    font-size: 1.6em; /* Slightly increase text size on hover */
 }
+
