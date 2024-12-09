@@ -1,4 +1,3 @@
-/* theme.css */
 /* General theme settings */
 body {
     background-color: black;
@@ -15,18 +14,18 @@ a {
 }
 
 a:hover {
-    color: #ff4040; /* Lighter red for better contrast */
+    color: #ff4040;
     text-decoration: underline;
 }
 
 a:focus {
-    outline: 2px dashed white; /* Accessibility focus style */
+    outline: 2px dashed white;
 }
 
 /* Menu styles */
 .nav span {
-    padding: 1em 2em; /* Increased padding for bigger menu items */
-    font-size: 1.5em; /* Larger font size for better readability */
+    padding: 1em 2em;
+    font-size: 1.5em;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, transform 0.2s ease-in-out;
 }
@@ -34,15 +33,15 @@ a:focus {
 .nav span:hover {
     background-color: red;
     color: black;
-    transform: scale(1.05); /* Slight enlargement on hover */
+    transform: scale(1.05);
 }
 
 .nav .selected {
     background-color: white;
     color: black;
     font-weight: bold;
-    font-size: 1.6em; /* Slightly larger font for the selected item */
-    border-bottom: 3px solid red; /* Thicker underline to highlight the active menu */
+    font-size: 1.6em;
+    border-bottom: 3px solid red;
 }
 
 /* Button styles */
@@ -50,8 +49,8 @@ button {
     background-color: black;
     color: white;
     border: 1px solid white;
-    padding: 0.8em 1.5em; /* Increased padding for larger buttons */
-    font-size: 1.2em; /* Larger font size for buttons */
+    padding: 0.8em 1.5em;
+    font-size: 1.2em;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     outline: none;
@@ -60,29 +59,83 @@ button {
 button:hover {
     background-color: white;
     color: black;
-    transform: scale(1.05); /* Slight enlargement */
-    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.2); /* Add subtle shadow on hover */
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.2);
 }
 
 button:focus {
-    outline: 2px dashed white; /* Accessibility focus style */
+    outline: 2px dashed white;
 }
 
-/* Table or List styles */
+/* File row styles */
 .row.file-wrapper {
     background-color: black;
     color: white;
-    transition: background-color 0.3s, color 0.3s, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    font-size: 1.5em;
+    padding: 0.5em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
 }
 
+/* Tooltip styles */
+.row.file-wrapper:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: #333;
+    color: white;
+    padding: 0.5em;
+    font-size: 1em;
+    border-radius: 4px;
+    white-space: normal;
+    width: max-content;
+    max-width: 300px;
+    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transform: translateY(5px);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.row.file-wrapper::after {
+    content: '';
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Hover Effect */
 .row.file-wrapper:hover {
-    background-color: red;
-    color: black;
-    transform: scale(1.02); /* Slight scaling for emphasis */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+    transform: scale(1.1);
+    text-shadow: 0 0 10px #ff4040, 0 0 20px #ff4040, 0 0 30px #ff4040;
+    font-size: 1.6em;
 }
 
-/* Loading Animation Styles */
+/* Glowing header styles */
+.media-server-title {
+    font-size: 2em;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 0 10px #ffffff, 0 0 20px #ff4040, 0 0 30px #ff4040;
+    animation: glow-pulse 2s infinite;
+    text-align: right;
+}
+
+@keyframes glow-pulse {
+    0%, 100% {
+        text-shadow: 0 0 10px #ffffff, 0 0 20px #ff4040, 0 0 30px #ff4040;
+    }
+    50% {
+        text-shadow: 0 0 15px #ff4040, 0 0 25px #ff7070, 0 0 40px #ff7070;
+    }
+}
+
+/* Loading Animation */
 .loading-wrapper {
     position: fixed;
     height: 2em;
@@ -94,7 +147,7 @@ button:focus {
 
 .loading {
     color: red;
-    background: black; /* Black background for contrast */
+    background: black;
     height: 100%;
     width: fit-content;
     min-width: 8em;
@@ -102,111 +155,28 @@ button:focus {
     margin: 0 auto;
     text-align: center;
     border-radius: 1em;
-    font-weight: bold; /* Bold text for emphasis */
-    font-size: 1.5em; /* Larger text for visibility */
-    text-transform: uppercase; /* Make text uppercase */
-    animation: blink 1s infinite, pulseGlow 1.5s infinite; /* Combine blink and glow animations */
+    font-weight: bold;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    animation: blink 1s infinite, pulseGlow 1.5s infinite;
 }
 
-/* Keyframes for the blinking effect */
 @keyframes blink {
     0%, 100% {
-        opacity: 1; /* Fully visible */
+        opacity: 1;
     }
     50% {
-        opacity: 0; /* Fully hidden */
+        opacity: 0;
     }
 }
 
-/* Keyframes for a glowing effect */
 @keyframes pulseGlow {
     0%, 100% {
         text-shadow: 0 0 5px red, 0 0 10px red, 0 0 20px orange;
-        transform: scale(1); /* Normal size */
+        transform: scale(1);
     }
     50% {
         text-shadow: 0 0 10px red, 0 0 20px orange, 0 0 30px yellow;
-        transform: scale(1.1); /* Slightly larger */
-    }
-}
-
-/* Table or List styles */
-.row.file-wrapper {
-    background-color: black;
-    color: white;
-    font-size: 1.5em; /* Increase text size */
-    padding: 0.5em; /* Add padding for better spacing */
-    transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out, font-size 0.3s ease-in-out;
-}
-
-.row.file-wrapper p {
-    margin: 0; /* Reset margin for proper alignment */
-}
-
-/* Hover Effect */
-.row.file-wrapper:hover {
-    transform: scale(1.1); /* Slightly enlarge on hover */
-    text-shadow: 0 0 10px #ff4040, 0 0 20px #ff4040, 0 0 30px #ff4040; /* Glowing effect */
-    font-size: 1.6em; /* Slightly increase text size on hover */
-}
-/* Row styles */
-.row.file-wrapper {
-    background-color: black;
-    color: white;
-    font-size: 1.5em;
-    padding: 0.5em;
-    white-space: nowrap; /* Prevent text wrapping */
-    overflow: hidden; /* Hide overflowing content */
-    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
-    position: relative; /* Position for tooltip */
-    cursor: pointer; /* Indicate interactivity */
-    transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
-}
-
-/* Tooltip styles */
-.row.file-wrapper:hover::after {
-    content: attr(data-tooltip); /* Display the full text from data attribute */
-    position: absolute;
-    left: 0;
-    top: 100%;
-    background-color: #333; /* Dark background for the tooltip */
-    color: white; /* Tooltip text color */
-    padding: 0.5em;
-    font-size: 1em;
-    border-radius: 4px; /* Rounded corners for the tooltip */
-    white-space: normal; /* Allow text to wrap */
-    width: max-content; /* Adjust width based on content */
-    max-width: 300px; /* Limit tooltip width */
-    z-index: 10; /* Ensure the tooltip is above other elements */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
-    transform: translateY(5px); /* Slight offset for visibility */
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
-}
-
-/* Tooltip hidden by default */
-.row.file-wrapper::after {
-    content: '';
-    opacity: 0;
-    visibility: hidden;
-}
-/* Glowing header styles */
-.media-server-title {
-    font-size: 2em; /* Make the text bigger */
-    color: white; /* Set the text color */
-    font-weight: bold; /* Bold text for emphasis */
-    text-shadow: 0 0 10px #ffffff, 0 0 20px #ff4040, 0 0 30px #ff4040; /* Glowing effect */
-    animation: glow-pulse 2s infinite; /* Add pulsating glow effect */
-    text-align: right; /* Align text to the right */
-}
-
-/* Pulsating glow animation */
-@keyframes glow-pulse {
-    0%, 100% {
-        text-shadow: 0 0 10px #ffffff, 0 0 20px #ff4040, 0 0 30px #ff4040;
-    }
-    50% {
-        text-shadow: 0 0 15px #ff4040, 0 0 25px #ff7070, 0 0 40px #ff7070;
+        transform: scale(1.1);
     }
 }
