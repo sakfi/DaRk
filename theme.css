@@ -129,3 +129,19 @@ button:focus {
         transform: scale(1.1); /* Slightly larger */
     }
 }
+
+/* Table or List styles for hover effects */
+.row.file-wrapper {
+    background-color: black;
+    color: white;
+    transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+.row.file-wrapper p {
+    margin: 0; /* Reset margin for better alignment */
+}
+
+.row.file-wrapper:hover {
+    transform: scale(1.1); /* Slightly enlarge the element on hover */
+    text-shadow: 0 0 10px #ff4040, 0 0 20px #ff4040, 0 0 30px #ff4040; /* Glowing effect */
+}
