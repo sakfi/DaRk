@@ -338,4 +338,27 @@ th {
     max-width: 100%;
     overflow-x: auto;
 }
+/* Center container holding the search input */
+.search-container {
+    display: flex; /* Enable flexbox */
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    height: 100vh; /* Make the container take full viewport height */
+}
+
+/* Style the search input */
+.search-container input {
+    width: 50%; /* Adjust width of the input field */
+    padding: 10px;
+    font-size: 1.2em;
+    border: 2px solid #ff4040;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-container input:focus {
+    border-color: white;
+}
+
 
