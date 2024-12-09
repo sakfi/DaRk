@@ -251,3 +251,91 @@ tr:hover {
         white-space: nowrap;
     }
 }
+/* General resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header and Title */
+.media-server-title {
+    text-align: right;
+    margin: 0;
+    padding: 1em 2em;
+    font-size: 2.5em;
+    color: white;
+    text-shadow: 0 0 10px #fff, 0 0 20px #ff4040;
+}
+
+/* Sticky navigation */
+.nav {
+    position: sticky;
+    top: 0;
+    background-color: black;
+    z-index: 1000;
+    padding: 1em 2em;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ff4040;
+}
+
+.nav span {
+    padding: 1em 2em;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.nav span:hover {
+    background-color: red;
+    color: black;
+}
+
+/* File Rows */
+.row.file-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em 1em;
+    background-color: black;
+    color: white;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+}
+
+.row.file-wrapper:hover {
+    background-color: #222;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+th, td {
+    text-align: left;
+    padding: 0.5em;
+    border: 1px solid #333;
+}
+
+th {
+    background-color: #222;
+    color: #ff4040;
+}
+
+/* Ensure no content overflow */
+.container {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
