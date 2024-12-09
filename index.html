@@ -717,6 +717,7 @@
         }
       }
     </style>
+    
     <script>
       function createCORSRequest(method, url, timeout) {
         let xhr = new XMLHttpRequest();
@@ -2272,8 +2273,57 @@
         addBackToTopListener();
       });
     </script>
-  </head>
+    <title>Centered Search</title>
+    <style>
+        /* General Resets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Center container holding the search input */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full height of the viewport */
+        }
+
+        /* Style the search input */
+        .search-container input {
+            width: 50%; /* Adjust width of the input field */
+            padding: 10px;
+            font-size: 1.2em;
+            border: 2px solid #ff4040;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-container input:focus {
+            border-color: white;
+        }
+    </style>
+  </head>
+<body>
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Search..." oninput="filterRows()">
+    </div>
+
+    <script>
+        function filterRows() {
+            // Add filtering logic here if needed
+            console.log('Search query:', document.getElementById('search').value);
+        }
+    </script>
+  </body>
   <body>
         <!-- Header -->
     <h1 class="media-server-title">SakFi's Media Server</h1>
