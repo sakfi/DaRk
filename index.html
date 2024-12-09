@@ -2275,6 +2275,46 @@
   </head>
 
   <body>
+        <!-- Header -->
+    <h1 class="media-server-title">SakFi's Media Server</h1>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <span class="selected">Movies</span>
+        <span>Series</span>
+    </div>
+
+    <!-- Search -->
+    <input type="text" id="search" placeholder="Search..." oninput="filterRows()">
+
+    <!-- File Rows -->
+    <div class="row file-wrapper" data-tooltip="Full file name for Movies">
+        <p>Movies</p>
+    </div>
+    <div class="row file-wrapper" data-tooltip="Full file name for Series">
+        <p>Series</p>
+    </div>
+
+    <!-- Upload Button -->
+    <button class="upload-button">Upload File</button>
+
+    <!-- Loading Animation -->
+    <div class="loading-wrapper">
+        <div class="loading">Loading...</div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function filterRows() {
+            const query = document.getElementById('search').value.toLowerCase();
+            const rows = document.querySelectorAll('.row.file-wrapper');
+
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(query) ? '' : 'none';
+            });
+        }
+    </script>
     <template id="tree-node-wrapper-template">
       <div class="tree-node-wrapper">
         <div class="tree-node">
