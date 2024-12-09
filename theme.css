@@ -191,5 +191,22 @@ button:focus {
     opacity: 0;
     visibility: hidden;
 }
+/* Glowing header styles */
+.media-server-title {
+    font-size: 2em; /* Make the text bigger */
+    color: white; /* Set the text color */
+    font-weight: bold; /* Bold text for emphasis */
+    text-shadow: 0 0 10px #ffffff, 0 0 20px #ff4040, 0 0 30px #ff4040; /* Glowing effect */
+    animation: glow-pulse 2s infinite; /* Add pulsating glow effect */
+    text-align: right; /* Align text to the right */
+}
 
-
+/* Pulsating glow animation */
+@keyframes glow-pulse {
+    0%, 100% {
+        text-shadow: 0 0 10px #ffffff, 0 0 20px #ff4040, 0 0 30px #ff4040;
+    }
+    50% {
+        text-shadow: 0 0 15px #ff4040, 0 0 25px #ff7070, 0 0 40px #ff7070;
+    }
+}
