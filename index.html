@@ -351,7 +351,7 @@
 
 .loading {
   color: red;
-  background: black; /* Set background to black */
+  background: black; /* Black background for contrast */
   height: 100%;
   width: fit-content;
   min-width: 8em;
@@ -359,7 +359,10 @@
   margin: 0 auto;
   text-align: center;
   border-radius: 1em;
-  animation: blink 1s infinite; /* Animation for blinking */
+  font-weight: bold; /* Make text bold */
+  font-size: 1.5em; /* Larger text for visibility */
+  text-transform: uppercase; /* Make text uppercase */
+  animation: blink 1s infinite, pulseGlow 1.5s infinite; /* Combine blink and glow animations */
 }
 
 /* Keyframes for the blinking effect */
@@ -371,6 +374,19 @@
     opacity: 0; /* Fully hidden */
   }
 }
+
+/* Keyframes for a glowing effect */
+@keyframes pulseGlow {
+  0%, 100% {
+    text-shadow: 0 0 5px red, 0 0 10px red, 0 0 20px orange;
+    transform: scale(1); /* Normal size */
+  }
+  50% {
+    text-shadow: 0 0 10px red, 0 0 20px orange, 0 0 30px yellow;
+    transform: scale(1.1); /* Slightly larger */
+  }
+}
+
 
 
       i {
