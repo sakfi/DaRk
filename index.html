@@ -341,25 +341,37 @@
       }
 
       .loading-wrapper {
-        position: fixed;
-        height: 2em;
-        line-height: 2em;
-        margin-top: 0.5em;
-        width: 100%;
-        z-index: 1;
-      }
+  position: fixed;
+  height: 2em;
+  line-height: 2em;
+  margin-top: 0.5em;
+  width: 100%;
+  z-index: 1;
+}
 
-      .loading {
-        color: red;
-        background: rgb(218, 215, 215);
-        height: 100%;
-        width: fit-content;
-        min-width: 8em;
-        padding: 0 1em;
-        margin: 0 auto;
-        text-align: center;
-        border-radius: 1em;
-      }
+.loading {
+  color: red;
+  background: black; /* Set background to black */
+  height: 100%;
+  width: fit-content;
+  min-width: 8em;
+  padding: 0 1em;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 1em;
+  animation: blink 1s infinite; /* Animation for blinking */
+}
+
+/* Keyframes for the blinking effect */
+@keyframes blink {
+  0%, 100% {
+    opacity: 1; /* Fully visible */
+  }
+  50% {
+    opacity: 0; /* Fully hidden */
+  }
+}
+
 
       i {
         font-size: 1.5em !important;
