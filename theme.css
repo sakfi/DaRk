@@ -11,29 +11,38 @@ a {
     color: white;
     text-decoration: none;
     transition: color 0.3s;
+    outline: none;
 }
 
 a:hover {
-    color: red;
+    color: #ff4040; /* Lighter red for better contrast */
     text-decoration: underline;
+}
+
+a:focus {
+    outline: 2px dashed white; /* Accessibility focus style */
 }
 
 /* Menu styles */
 .nav span {
-    padding: 0.5em 1em;
+    padding: 1em 2em; /* Increased padding for bigger menu items */
+    font-size: 1.5em; /* Larger font size for better readability */
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s ease-in-out;
 }
 
 .nav span:hover {
     background-color: red;
     color: black;
+    transform: scale(1.05); /* Slight enlargement on hover */
 }
 
 .nav .selected {
     background-color: white;
     color: black;
     font-weight: bold;
+    font-size: 1.6em; /* Slightly larger font for the selected item */
+    border-bottom: 3px solid red; /* Thicker underline to highlight the active menu */
 }
 
 /* Button styles */
@@ -41,24 +50,82 @@ button {
     background-color: black;
     color: white;
     border: 1px solid white;
-    padding: 0.5em 1em;
+    padding: 0.8em 1.5em; /* Increased padding for larger buttons */
+    font-size: 1.2em; /* Larger font size for buttons */
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    outline: none;
 }
 
 button:hover {
     background-color: white;
     color: black;
+    transform: scale(1.05); /* Slight enlargement */
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.2); /* Add subtle shadow on hover */
+}
+
+button:focus {
+    outline: 2px dashed white; /* Accessibility focus style */
 }
 
 /* Table or List styles */
 .row.file-wrapper {
     background-color: black;
     color: white;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .row.file-wrapper:hover {
     background-color: red;
     color: black;
+    transform: scale(1.02); /* Slight scaling for emphasis */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+}
+
+/* Loading Animation Styles */
+.loading-wrapper {
+    position: fixed;
+    height: 2em;
+    line-height: 2em;
+    margin-top: 0.5em;
+    width: 100%;
+    z-index: 1;
+}
+
+.loading {
+    color: red;
+    background: black; /* Black background for contrast */
+    height: 100%;
+    width: fit-content;
+    min-width: 8em;
+    padding: 0 1em;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 1em;
+    font-weight: bold; /* Bold text for emphasis */
+    font-size: 1.5em; /* Larger text for visibility */
+    text-transform: uppercase; /* Make text uppercase */
+    animation: blink 1s infinite, pulseGlow 1.5s infinite; /* Combine blink and glow animations */
+}
+
+/* Keyframes for the blinking effect */
+@keyframes blink {
+    0%, 100% {
+        opacity: 1; /* Fully visible */
+    }
+    50% {
+        opacity: 0; /* Fully hidden */
+    }
+}
+
+/* Keyframes for a glowing effect */
+@keyframes pulseGlow {
+    0%, 100% {
+        text-shadow: 0 0 5px red, 0 0 10px red, 0 0 20px orange;
+        transform: scale(1); /* Normal size */
+    }
+    50% {
+        text-shadow: 0 0 10px red, 0 0 20px orange, 0 0 30px yellow;
+        transform: scale(1.1); /* Slightly larger */
+    }
 }
