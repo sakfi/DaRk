@@ -149,4 +149,47 @@ button:focus {
     text-shadow: 0 0 10px #ff4040, 0 0 20px #ff4040, 0 0 30px #ff4040; /* Glowing effect */
     font-size: 1.6em; /* Slightly increase text size on hover */
 }
+/* Row styles */
+.row.file-wrapper {
+    background-color: black;
+    color: white;
+    font-size: 1.5em;
+    padding: 0.5em;
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflowing content */
+    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+    position: relative; /* Position for tooltip */
+    cursor: pointer; /* Indicate interactivity */
+    transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+/* Tooltip styles */
+.row.file-wrapper:hover::after {
+    content: attr(data-tooltip); /* Display the full text from data attribute */
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: #333; /* Dark background for the tooltip */
+    color: white; /* Tooltip text color */
+    padding: 0.5em;
+    font-size: 1em;
+    border-radius: 4px; /* Rounded corners for the tooltip */
+    white-space: normal; /* Allow text to wrap */
+    width: max-content; /* Adjust width based on content */
+    max-width: 300px; /* Limit tooltip width */
+    z-index: 10; /* Ensure the tooltip is above other elements */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+    transform: translateY(5px); /* Slight offset for visibility */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Tooltip hidden by default */
+.row.file-wrapper::after {
+    content: '';
+    opacity: 0;
+    visibility: hidden;
+}
+
 
