@@ -22,7 +22,16 @@ a:focus {
     outline: 2px dashed white;
 }
 
-/* Menu styles */
+/* Sticky navigation bar */
+.nav {
+    position: sticky;
+    top: 0;
+    background-color: black;
+    z-index: 1000;
+    padding: 1em;
+    border-bottom: 1px solid #ff4040;
+}
+
 .nav span {
     padding: 1em 2em;
     font-size: 1.5em;
@@ -44,7 +53,71 @@ a:focus {
     border-bottom: 3px solid red;
 }
 
-/* Button styles */
+/* File rows */
+.row.file-wrapper {
+    background-color: black;
+    color: white;
+    font-size: 1.5em;
+    padding: 0.5em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+.row.file-wrapper:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 10px #ff4040, 0 0 20px #ff4040, 0 0 30px #ff4040;
+}
+
+/* Tooltip for file rows */
+.row.file-wrapper:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: #333;
+    color: white;
+    padding: 0.5em;
+    border-radius: 4px;
+    white-space: normal;
+    width: max-content;
+    max-width: 300px;
+    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transform: translateY(5px);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.row.file-wrapper::after {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Glowing header styles */
+.media-server-title {
+    font-size: 2.5em;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 0 15px #ffffff, 0 0 30px #ff4040, 0 0 45px #ff4040;
+    animation: glow 2s infinite;
+    text-align: center;
+}
+
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 15px #ffffff, 0 0 30px #ff4040, 0 0 45px #ff4040;
+    }
+    50% {
+        text-shadow: 0 0 20px #ff7070, 0 0 40px #ff4040, 0 0 60px #ff4040;
+    }
+}
+
+/* Buttons */
 button {
     background-color: black;
     color: white;
@@ -67,75 +140,23 @@ button:focus {
     outline: 2px dashed white;
 }
 
-/* File row styles */
-.row.file-wrapper {
-    background-color: black;
+/* Upload button */
+.upload-button {
+    background-color: #ff4040;
     color: white;
-    font-size: 1.5em;
-    padding: 0.5em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
-}
-
-/* Tooltip styles */
-.row.file-wrapper:hover::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    left: 0;
-    top: 100%;
-    background-color: #333;
-    color: white;
-    padding: 0.5em;
+    border: none;
+    padding: 0.8em 1.5em;
     font-size: 1em;
-    border-radius: 4px;
-    white-space: normal;
-    width: max-content;
-    max-width: 300px;
-    z-index: 10;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transform: translateY(5px);
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
 }
 
-.row.file-wrapper::after {
-    content: '';
-    opacity: 0;
-    visibility: hidden;
+.upload-button:hover {
+    background-color: #ff7070;
 }
 
-/* Hover Effect */
-.row.file-wrapper:hover {
-    transform: scale(1.1);
-    text-shadow: 0 0 10px #ff4040, 0 0 20px #ff4040, 0 0 30px #ff4040;
-    font-size: 1.6em;
-}
-
-/* Glowing header styles */
-.media-server-title {
-    font-size: 2em;
-    color: white;
-    font-weight: bold;
-    text-shadow: 0 0 10px #ffffff, 0 0 20px #ff4040, 0 0 30px #ff4040;
-    animation: glow-pulse 2s infinite;
-    text-align: right;
-}
-
-@keyframes glow-pulse {
-    0%, 100% {
-        text-shadow: 0 0 10px #ffffff, 0 0 20px #ff4040, 0 0 30px #ff4040;
-    }
-    50% {
-        text-shadow: 0 0 15px #ff4040, 0 0 25px #ff7070, 0 0 40px #ff7070;
-    }
-}
-
-/* Loading Animation */
+/* Loading spinner */
 .loading-wrapper {
     position: fixed;
     height: 2em;
@@ -178,5 +199,48 @@ button:focus {
     50% {
         text-shadow: 0 0 10px red, 0 0 20px orange, 0 0 30px yellow;
         transform: scale(1.1);
+    }
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+    font-size: 1.2em;
+}
+
+th, td {
+    border: 1px solid #333;
+    padding: 0.5em;
+}
+
+th {
+    background-color: #222;
+    color: #ff4040;
+}
+
+tr:nth-child(even) {
+    background-color: #111;
+}
+
+tr:hover {
+    background-color: #ff4040;
+    color: black;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .media-server-title {
+        font-size: 1.8em;
+    }
+
+    .row.file-wrapper {
+        font-size: 1em;
+    }
+
+    .nav span {
+        font-size: 1em;
+        padding: 0.5em;
     }
 }
