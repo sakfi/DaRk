@@ -1,0 +1,73 @@
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .container {
+    padding: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .file {
+    font-size: 0.9em;
+  }
+  .file-upload-label {
+    font-size: 0.8em;
+  }
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+body.dark-mode .header-wrapper {
+  background-color: #1e1e1e;
+}
+
+/* Spinner for Loading Indicator */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #ccc;
+  border-top: 5px solid #000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Enhancements for Search and Pagination */
+#file-search {
+  padding: 8px;
+  width: 250px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+#pagination-controls {
+  text-align: center;
+  padding: 10px;
+}
+
+#pagination-controls button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#pagination-controls button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
