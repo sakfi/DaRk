@@ -2578,5 +2578,78 @@
   });
 </script>
 
-  </body>
+  
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+  <button id="dark-mode-toggle" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    Toggle Dark Mode
+  </button>
+</div>
+
+<script>
+  // Toggle Dark Mode
+  document.getElementById("dark-mode-toggle").addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+  });
+</script>
+
+<style>
+  body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+  }
+</style>
+
+
+<div class="header-right" style="display: flex; align-items: center; gap: 10px;">
+  <input
+    type="text"
+    id="file-search"
+    placeholder="Search files..."
+    style="padding: 8px; width: 250px; border: 1px solid #ddd; border-radius: 5px;"
+  />
+  <img src="https://via.placeholder.com/20" alt="Arrow Icon" class="icon" />
+  <img src="https://via.placeholder.com/20" alt="Folder Icon" class="icon" />
+</div>
+
+<script>
+  // Filter file list based on search input
+  document.getElementById("file-search").addEventListener("input", (e) => {
+    const query = e.target.value.toLowerCase();
+    document.querySelectorAll("#file-list .file-card").forEach((file) => {
+      const fileName = file.querySelector(".file-name").innerText.toLowerCase();
+      file.style.display = fileName.includes(query) ? "block" : "none";
+    });
+  });
+</script>
+
+
+<div id="pagination-controls" style="text-align: center; padding: 10px;">
+  <button id="prev-page" disabled>Previous</button>
+  <span id="current-page">1</span>
+  <button id="next-page">Next</button>
+</div>
+
+<script>
+  let currentPage = 1;
+  const itemsPerPage = 20;
+
+  document.getElementById("prev-page").addEventListener("click", () => {
+    if (currentPage > 1) {
+      currentPage--;
+      paginateFiles(currentPage);
+    }
+  });
+
+  document.getElementById("next-page").addEventListener("click", () => {
+    currentPage++;
+    paginateFiles(currentPage);
+  });
+
+  function paginateFiles(page) {
+    // Implement file pagination logic
+    console.log(`Fetching files for page ${page}`);
+  }
+</script>
+
+</body>
 </html>
