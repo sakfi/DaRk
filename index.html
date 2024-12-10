@@ -2400,17 +2400,21 @@
 </style>
 
 <!-- Enhancements: UI Elements -->
-<div style="position: fixed; top: 10px; right: 10px;">
-  <button id="dark-mode-toggle" style="padding: 5px 10px;">Toggle Dark Mode</button>
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+  <button id="dark-mode-toggle" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    Toggle Dark Mode
+  </button>
 </div>
 
-<div style="padding: 10px;">
+<div style="display: flex; justify-content: flex-end; align-items: center; gap: 10px;">
   <input
     type="text"
     id="file-search"
     placeholder="Search files..."
-    style="width: 100%; padding: 8px;"
+    style="padding: 8px; width: 250px; border: 1px solid #ddd; border-radius: 5px;"
   />
+  <img src="arrow-icon.png" alt="Arrow" style="width: 20px; height: 20px;" />
+  <img src="folder-icon.png" alt="Folder" style="width: 20px; height: 20px;" />
 </div>
 
 <div id="loading-spinner" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
@@ -2488,6 +2492,60 @@
       }
     });
   });
+	//  Updated Header HTML Structure
+	<div class="header">
+  <div class="left-section">
+    <img src="folder-icon.png" alt="Folder Icon" />
+    <span>My OneDrive</span>
+  </div>
+  <div class="right-section">
+    <input
+      type="text"
+      id="file-search"
+      placeholder="Search files..."
+      style="padding: 8px; width: 250px; border: 1px solid #ddd; border-radius: 5px;"
+    />
+    <img src="arrow-icon.png" alt="Arrow Icon" />
+    <img src="folder-icon.png" alt="Folder Icon" />
+  </div>
+</div>
+<style>
+  /* Header Alignment Fix */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f9fa; /* Light background for visibility */
+    border-bottom: 1px solid #ddd;
+  }
+
+  .header .left-section {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Add spacing between icons and text */
+  }
+
+  .header .right-section {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Add spacing between search bar and icons */
+  }
+
+  #file-search {
+    padding: 8px;
+    width: 250px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+
+  /* Icon Styling */
+  .header img {
+    width: 20px;
+    height: 20px;
+  }
+</style>
+
 </script>
   </body>
 </html>
