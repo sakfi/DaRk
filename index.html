@@ -2358,5 +2358,136 @@
     <div id="back-to-top" data-hidden="1">
       <i class="zmdi zmdi-caret-up-circle"></i>
     </div>
+	<!-- Enhancements: Styles and Features -->
+<style>
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .header-wrapper {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .container {
+      padding: 10px;
+    }
+  }
+  @media (max-width: 480px) {
+    .file {
+      font-size: 0.9em;
+    }
+    .file-upload-label {
+      font-size: 0.8em;
+    }
+  }
+
+  /* Dark Mode */
+  body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+  }
+  body.dark-mode .header-wrapper {
+    background-color: #1e1e1e;
+  }
+
+  /* Spinner for Loading Indicator */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>
+
+<!-- Enhancements: UI Elements -->
+<div style="position: fixed; top: 10px; right: 10px;">
+  <button id="dark-mode-toggle" style="padding: 5px 10px;">Toggle Dark Mode</button>
+</div>
+
+<div style="padding: 10px;">
+  <input
+    type="text"
+    id="file-search"
+    placeholder="Search files..."
+    style="width: 100%; padding: 8px;"
+  />
+</div>
+
+<div id="loading-spinner" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+  <div class="spinner" style="width: 50px; height: 50px; border: 5px solid #ccc; border-top: 5px solid #000; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+</div>
+
+<div id="pagination-controls" style="text-align: center; padding: 10px;">
+  <button id="prev-page" disabled>Previous</button>
+  <span id="current-page">1</span>
+  <button id="next-page">Next</button>
+</div>
+
+<!-- Enhancements: Scripts -->
+<script>
+  // Dark Mode Toggle
+  document.getElementById("dark-mode-toggle").addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+  });
+
+  // File Search
+  document.getElementById("file-search").addEventListener("input", (e) => {
+    const query = e.target.value.toLowerCase();
+    document.querySelectorAll("#file-list .row.file-wrapper").forEach((file) => {
+      const fileName = file.querySelector(".name").innerText.toLowerCase();
+      file.style.display = fileName.includes(query) ? "flex" : "none";
+    });
+  });
+
+  // Loading Spinner
+  function showSpinner() {
+    document.getElementById("loading-spinner").style.display = "block";
+  }
+  function hideSpinner() {
+    document.getElementById("loading-spinner").style.display = "none";
+  }
+
+  // Pagination
+  let currentPage = 1;
+  const itemsPerPage = 20;
+
+  function paginateFiles(page) {
+    const files = Array.from(document.querySelectorAll("#file-list .row.file-wrapper"));
+    files.forEach((file, index) => {
+      file.style.display = index >= (page - 1) * itemsPerPage && index < page * itemsPerPage ? "flex" : "none";
+    });
+    document.getElementById("prev-page").disabled = page === 1;
+    document.getElementById("next-page").disabled = page * itemsPerPage >= files.length;
+    document.getElementById("current-page").innerText = page;
+  }
+
+  document.getElementById("prev-page").addEventListener("click", () => {
+    if (currentPage > 1) paginateFiles(--currentPage);
+  });
+  document.getElementById("next-page").addEventListener("click", () => {
+    paginateFiles(++currentPage);
+  });
+
+  paginateFiles(currentPage);
+
+  // Accessibility Enhancements
+  document.querySelectorAll(".row.file-wrapper").forEach((file) => {
+    file.setAttribute("role", "listitem");
+  });
+  document.getElementById("file-list").setAttribute("role", "list");
+
+  // File Preview
+  document.querySelectorAll("#file-list .row.file-wrapper").forEach((file) => {
+    const fileName = file.querySelector(".name").innerText;
+    const fileExt = fileName.split(".").pop().toLowerCase();
+    file.addEventListener("click", () => {
+      if (fileExt === "pdf" || ["jpg", "png"].includes(fileExt)) {
+        const previewUrl = file.querySelector(".name").getAttribute("data-url");
+        const previewWindow = window.open(previewUrl, "_blank");
+        previewWindow.focus();
+      }
+    });
+  });
+</script>
   </body>
 </html>
