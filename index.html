@@ -2237,7 +2237,8 @@
         addBackToTopListener();
       });
     </script>
-  </head>
+    <link rel="stylesheet" type="text/css" href="enhancements.css">
+</head>
 
   <body>
     <template id="tree-node-wrapper-template">
@@ -2413,8 +2414,8 @@
     placeholder="Search files..."
     style="padding: 8px; width: 250px; border: 1px solid #ddd; border-radius: 5px;"
   />
-  <img src="https://via.placeholder.com/20" alt="Arrow" style="width: 20px; height: 20px;" />
-  <img src="https://via.placeholder.com/20" alt="Folder" style="width: 20px; height: 20px;" />
+  <img src="arrow-icon.png" alt="Arrow" style="width: 20px; height: 20px;" />
+  <img src="folder-icon.png" alt="Folder" style="width: 20px; height: 20px;" />
 </div>
 
 <div id="loading-spinner" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);">
@@ -2495,7 +2496,7 @@
 	//  Updated Header HTML Structure
 	<div class="header">
   <div class="left-section">
-    <img src="https://via.placeholder.com/20" alt="Folder Icon" />
+    <img src="folder-icon.png" alt="Folder Icon" />
     <span>My OneDrive</span>
   </div>
   <div class="right-section">
@@ -2505,8 +2506,8 @@
       placeholder="Search files..."
       style="padding: 8px; width: 250px; border: 1px solid #ddd; border-radius: 5px;"
     />
-    <img src="https://via.placeholder.com/20" alt="Arrow Icon" />
-    <img src="https://via.placeholder.com/20" alt="Folder Icon" />
+    <img src="arrow-icon.png" alt="Arrow Icon" />
+    <img src="folder-icon.png" alt="Folder Icon" />
   </div>
 </div>
 <style>
@@ -2558,8 +2559,8 @@
       placeholder="Search files..."
       style="padding: 8px; width: 250px; border: 1px solid #ddd; border-radius: 5px;"
     />
-    <img src="https://via.placeholder.com/20" alt="Arrow Icon" />
-    <img src="https://via.placeholder.com/20" alt="Folder Icon" />
+    <img src="arrow-icon.png" alt="Arrow Icon" />
+    <img src="folder-icon.png" alt="Folder Icon" />
   </div>
 </div>
 <script>
@@ -2578,140 +2579,5 @@
   });
 </script>
 
-  
-<div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
-  <button id="dark-mode-toggle" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
-    Toggle Dark Mode
-  </button>
-</div>
-
-<script>
-  // Toggle Dark Mode
-  document.getElementById("dark-mode-toggle").addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-  });
-</script>
-
-<style>
-  body.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
-  }
-</style>
-
-
-<div class="header-right" style="display: flex; align-items: center; gap: 10px;">
-  <input
-    type="text"
-    id="file-search"
-    placeholder="Search files..."
-    style="padding: 8px; width: 250px; border: 1px solid #ddd; border-radius: 5px;"
-  />
-  <img src="https://via.placeholder.com/20" alt="Arrow Icon" class="icon" />
-  <img src="https://via.placeholder.com/20" alt="Folder Icon" class="icon" />
-</div>
-
-<script>
-  // Filter file list based on search input
-  document.getElementById("file-search").addEventListener("input", (e) => {
-    const query = e.target.value.toLowerCase();
-    document.querySelectorAll("#file-list .file-card").forEach((file) => {
-      const fileName = file.querySelector(".file-name").innerText.toLowerCase();
-      file.style.display = fileName.includes(query) ? "block" : "none";
-    });
-  });
-</script>
-
-
-<div id="pagination-controls" style="text-align: center; padding: 10px;">
-  <button id="prev-page" disabled>Previous</button>
-  <span id="current-page">1</span>
-  <button id="next-page">Next</button>
-</div>
-
-<script>
-  let currentPage = 1;
-  const itemsPerPage = 20;
-
-  document.getElementById("prev-page").addEventListener("click", () => {
-    if (currentPage > 1) {
-      currentPage--;
-      paginateFiles(currentPage);
-    }
-  });
-
-  document.getElementById("next-page").addEventListener("click", () => {
-    currentPage++;
-    paginateFiles(currentPage);
-  });
-
-  function paginateFiles(page) {
-    // Implement file pagination logic
-    console.log(`Fetching files for page ${page}`);
-  }
-</script>
-
-
-<script>
-  // Dark Mode Toggle
-  document.getElementById("dark-mode-toggle").addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-    localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
-  });
-
-  // Load Dark Mode State
-  document.addEventListener("DOMContentLoaded", () => {
-    if (localStorage.getItem("darkMode") === "true") {
-      document.body.classList.add("dark-mode");
-    }
-  });
-</script>
-
-
-<script>
-  // File Search Functionality
-  document.getElementById("file-search").addEventListener("input", (e) => {
-    const query = e.target.value.toLowerCase();
-    document.querySelectorAll("#file-list .file-wrapper").forEach((file) => {
-      const fileName = file.querySelector(".name").innerText.toLowerCase();
-      file.style.display = fileName.includes(query) ? "flex" : "none";
-    });
-  });
-</script>
-
-
-<script>
-  let currentPage = 1;
-  const itemsPerPage = 10;
-
-  document.getElementById("prev-page").addEventListener("click", () => {
-    if (currentPage > 1) {
-      currentPage--;
-      paginateFiles();
-    }
-  });
-
-  document.getElementById("next-page").addEventListener("click", () => {
-    currentPage++;
-    paginateFiles();
-  });
-
-  function paginateFiles() {
-    const files = document.querySelectorAll("#file-list .file-wrapper");
-    files.forEach((file, index) => {
-      file.style.display =
-        index >= (currentPage - 1) * itemsPerPage && index < currentPage * itemsPerPage
-          ? "flex"
-          : "none";
-    });
-    document.getElementById("current-page").innerText = currentPage;
-    document.getElementById("prev-page").disabled = currentPage === 1;
-    document.getElementById("next-page").disabled = currentPage * itemsPerPage >= files.length;
-  }
-
-  // Initialize Pagination
-  document.addEventListener("DOMContentLoaded", paginateFiles);
-</script>
-
-</body>
+  </body>
 </html>
