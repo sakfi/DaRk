@@ -2546,6 +2546,37 @@
   }
 </style>
 
+<div class="header">
+  <div class="left-section">
+    <img src="https://via.placeholder.com/20" alt="Folder Icon" />
+    <span>My OneDrive</span>
+  </div>
+  <div class="right-section">
+    <input
+      type="text"
+      id="file-search"
+      placeholder="Search files..."
+      style="padding: 8px; width: 250px; border: 1px solid #ddd; border-radius: 5px;"
+    />
+    <img src="arrow-icon.png" alt="Arrow Icon" />
+    <img src="folder-icon.png" alt="Folder Icon" />
+  </div>
+</div>
+<script>
+  // Toggle Dark Mode
+  document.getElementById("dark-mode-toggle").addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+  });
+
+  // Search Functionality
+  document.getElementById("file-search").addEventListener("input", (e) => {
+    const query = e.target.value.toLowerCase();
+    document.querySelectorAll("#file-list .file-card").forEach((file) => {
+      const fileName = file.querySelector(".file-name").innerText.toLowerCase();
+      file.style.display = fileName.includes(query) ? "block" : "none";
+    });
+  });
 </script>
+
   </body>
 </html>
